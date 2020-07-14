@@ -7,7 +7,9 @@ import java.io.FileReader;
 public class Main {
 
     public static void main(String[] args) {
-        SecondDay.start();
+        //FirstDay.start();
+//        SecondDay.start();
+        ThirdDay.start();
     }
 }
 
