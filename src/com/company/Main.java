@@ -1,4 +1,6 @@
 package com.company;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -6,10 +8,11 @@ import java.io.FileReader;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         //FirstDay.start();
 //        SecondDay.start();
-        ThirdDay.start();
+//        ThirdDay.start();
+        FourthDay.start();
     }
 }
 
