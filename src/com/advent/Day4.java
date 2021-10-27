@@ -1,4 +1,4 @@
-package com.company;
+package com.advent;
 
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
@@ -7,28 +7,22 @@ import java.security.NoSuchAlgorithmException;
 import java.time.Duration;
 import java.time.Instant;
 
-public class FourthDay {
+public class Day4 {
     public static void start() throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        System.out.println("DAY 4");
-
-        String test1 = "pqrstuv1048970"; //000006136ef...
-        String test2 = "abcdef"; //000001dbbfa...
+        System.out.println("-- Day 4 --");
 
         String puzzleInput = "bgvyzdsv";
-        Instant start = Instant.now();
+
         int part1 = getSmallestNumberForKey(puzzleInput, "00000");
         int part2 = getSmallestNumberForKey(puzzleInput, "000000");
-        Instant end = Instant.now();
-        System.out.println("Part 1:" + part1 + "Part 2:" + part2);
-        // duration of operation
-        System.out.println(Duration.between(start, end));
+        System.out.println("Part 1: " + part1);
+        System.out.println("Part 2: " + part2);
     }
 
     static int getSmallestNumberForKey(String input, String searchString) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         int i = 1;
         while(i < 32000000) {
             String joinedLine = input + Integer.toString(i);
-//            System.out.println(joinedLine + " : " + getHash(joinedLine));
             if (checkHashForNull(getHash(joinedLine), searchString)) {
                 return i;
             }
@@ -59,6 +53,4 @@ public class FourthDay {
         }
         return hashtext;
     }
-
-
 }

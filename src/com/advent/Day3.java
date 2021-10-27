@@ -1,22 +1,23 @@
-package com.company;
+package com.advent;
 
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class ThirdDay {
+public class Day3 {
     public static void start() {
-        String filePath = "c:\\data\\directions.txt";
+        System.out.println("-- Day 3 --");
 
+        String filePath = "\\input\\day3.txt";
         List<String> lineData = FileInputReader.readInput(filePath);
         char[] directionsList = lineData.get(0).toCharArray();
-        System.out.println(directionsList);
-//        Map<String, Integer> list = getVisitedHousesList(directionsList);
-        Map<String, Integer> list = getVisitedHousesListByTwoSantas(directionsList);
-//        long lenghtList = list.entrySet().stream()
-//                .filter(house -> house.getValue() > 1).count();
-        System.out.println(list.size());
+
+        Map<String, Integer> housesList = getVisitedHousesList(directionsList);
+        System.out.println("Part 1: " + housesList.size());
+
+        Map<String, Integer> housesListByTwoSantas = getVisitedHousesListByTwoSantas(directionsList);
+        System.out.println("Part 2: " + housesListByTwoSantas.size());
     }
 
     public static Map<String, Integer> getVisitedHousesList(char[] directions) {
@@ -26,20 +27,12 @@ public class ThirdDay {
         int x = 0, y = 0;
         for (char direction : directions) {
             switch (direction) {
-                case '^':
-                    y = y + 1;
-                    break;
-                case 'v':
-                    y = y - 1;
-                    break;
-                case '>':
-                    x = x + 1;
-                    break;
-                case '<':
-                    x = x - 1;
-                    break;
-                default:
-                    break;
+                case '^' -> y = y + 1;
+                case 'v' -> y = y - 1;
+                case '>' -> x = x + 1;
+                case '<' -> x = x - 1;
+                default -> {
+                }
             }
             String homeCoord = 'x' + Integer.toString(x) + 'y' + Integer.toString(y);
             int visitCounter = 0;
@@ -47,7 +40,6 @@ public class ThirdDay {
                 visitCounter = visitedHomes.get(homeCoord);
             }
             visitCounter += 1;
-            System.out.println("Coordinates:" + homeCoord + "Count:" + visitCounter);
             visitedHomes.put(homeCoord, visitCounter);
 //            visitedHomes.put()
         }
@@ -66,22 +58,13 @@ public class ThirdDay {
         int i;
         for (i = 0; i < directions.length; i++) {
             switch (directions[i]) {
-                case '^':
-                    y = y + 1;
-                    break;
-                case 'v':
-                    y = y - 1;
-                    break;
-                case '>':
-                    x = x + 1;
-                    break;
-                case '<':
-                    x = x - 1;
-                    break;
-                default:
-                    break;
+                case '^' -> y = y + 1;
+                case 'v' -> y = y - 1;
+                case '>' -> x = x + 1;
+                case '<' -> x = x - 1;
+                default -> {
+                }
             }
-
 
             String homeCoord = 'x' + Integer.toString(x) + 'y' + Integer.toString(y);
             int visitCounter = 0;
@@ -89,26 +72,15 @@ public class ThirdDay {
                 visitCounter = visitedHomes.get(homeCoord);
             }
             visitCounter += 1;
-            System.out.println("Coordinates:" + homeCoord + " Count:" + visitCounter);
             visitedHomes.put(homeCoord, visitCounter);
-//            visitedHomes.put()
-            // coordinates swap
+
             int tempX = x, tempY = y;
             x = bufferX;
             y = bufferY;
             bufferX = tempX;
             bufferY = tempY;
-
-
         }
 
         return visitedHomes;
     }
-
-//    public static void swap(String [] a){
-//        String temp;
-//        temp = a[0];
-//        a[0] = a[1];
-//        a[1] = temp;
-//    }
 }

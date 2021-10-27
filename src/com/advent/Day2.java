@@ -1,18 +1,17 @@
-package com.company;
+package com.advent;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
-
-public class SecondDay {
+public class Day2 {
     public static void start() {
-        String filePath = "c:\\data\\dimensions.txt";
+        System.out.println("-- Day 2 --");
 
+        String filePath = "\\input\\day2.txt";
         ArrayList<String> lineData = FileInputReader.readInput(filePath);
 
-//        calcWrappingPaper(lineData);
+        calcWrappingPaper(lineData);
         calcRibbonLength(lineData);
-
     }
 
     public static void calcWrappingPaper(ArrayList<String> lineData) {
@@ -30,25 +29,20 @@ public class SecondDay {
             sumsQuare += Collections.min(areaList);
             dimensionLine += 1;
         }
-        System.out.println(sumsQuare);
-        System.out.println(dimensionLine);
+        System.out.println("Part 1: " + sumsQuare);
     }
 
     public static void calcRibbonLength(ArrayList<String> lineData) {
-
         int line = 0;
         int ribbonLength = 0;
         for(String dimStr: lineData) {
             String[] stringNumbers = dimStr.split("x");
             List<Integer> sortedFaces = Arrays.stream(stringNumbers).map(Integer::valueOf).sorted().collect(Collectors.toList());
 
-            System.out.println(sortedFaces);
             ribbonLength += (sortedFaces.get(0)+sortedFaces.get(1)) * 2;
             ribbonLength += sortedFaces.stream().reduce(1, (acc, cur) -> acc * cur);
             line += 1;
         }
-        System.out.println(ribbonLength);
-        System.out.println(line);
+        System.out.println("Part 2: " + ribbonLength);
     }
-
 }

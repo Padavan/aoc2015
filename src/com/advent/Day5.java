@@ -1,4 +1,4 @@
-package com.company;
+package com.advent;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -7,12 +7,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class FifthDay {
+public class Day5 {
     public static void start() {
-        System.out.println("Fifth Day");
+        System.out.println("-- Day 5 --");
 
-        executePart1();
-        executePart2();
+        String filePath = "\\input\\day5.txt";
+        ArrayList<String> lineData = FileInputReader.readInput(filePath);
+
+        executePart1(lineData);
+        executePart2(lineData);
     }
 
 //    static boolean validateVowelsRule(String abc) {
@@ -75,11 +78,7 @@ public class FifthDay {
     }
 
 
-    static void executePart1() {
-        String filePath = "c:\\data\\nicestrings.txt";
-
-        ArrayList<String> lineData = FileInputReader.readInput(filePath);
-
+    static void executePart1(ArrayList<String> lineData) {
         int numberOfNiceStrings = 0;
         for (String line: lineData) {
             if (isNice(line)) {
@@ -90,10 +89,7 @@ public class FifthDay {
         System.out.println("Part 1: " + numberOfNiceStrings);
     }
 
-    static void executePart2() {
-        String filePath = "c:\\data\\nicestrings.txt";
-
-        ArrayList<String> lineData = FileInputReader.readInput(filePath);
+    static void executePart2(ArrayList<String> lineData) {
 
         int numberOfNiceStrings = 0;
         for (String line: lineData) {
