@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 
-class FileInputReader {
+public class FileInputReader {
     public static ArrayList<String> readInput(String path) {
         ArrayList<String> lineData = new ArrayList<>();
         String projectFolder = new File("").getAbsolutePath();
