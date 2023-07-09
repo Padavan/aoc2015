@@ -25,4 +25,28 @@ public class FileInputReader {
 
         return lineData;
     }
+
+    public static String readWholeInput(String path) {
+        String projectFolder = new File("").getAbsolutePath();
+        String inputPath = projectFolder + path;
+        StringBuilder stringBuilder = new StringBuilder();
+        String line = null;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(projectFolder + path))) {
+            String ls = System.getProperty("line.separator");
+            while ((line = reader.readLine()) != null) {
+                stringBuilder.append(line);
+                stringBuilder.append("\n");
+            }
+            // delete the last new line separator
+//            stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+            reader.close();
+
+        } catch (Exception ex) {
+            System.out.println("readLine() failed.");
+        }
+
+        String content = stringBuilder.toString();
+        return content;
+    }
 }

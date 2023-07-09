@@ -27,7 +27,7 @@ public class Tokenizer {
                 this.currentToken = new Token(TokenType.EOL, "newline");
                 this.readChar();
                 break;
-            case '0':
+            case 'Ж':
                 this.currentToken = new Token(TokenType.EOF, "");
                 break;
             default:
@@ -68,7 +68,7 @@ public class Tokenizer {
 
     public void readChar() {
         if (this.readPosition >= this.input.length()) {
-            this.ch = '0';
+            this.ch = 'Ж';
         } else {
             this.ch = this.input.charAt(this.readPosition);
         };
